@@ -37,14 +37,24 @@
 </template>
 
 <script>
-    export default {
+import mui from './assets/lib/mui-master/dist/js/mui.js'
 
+    export default {
+        mounted() {
+            mui("header, nav").on("tap", "a", function() {
+                mui.openWindow({url: this.href})
+            })
+        }
     }
 </script>
 
 <style scoped>
+    .mint-header {
+        z-index: 99;
+    }
    .box {
        padding-top: 40px;
+       padding-bottom: 50px;
        overflow-x: hidden;
    }
 
@@ -60,5 +70,8 @@
     .v-enter-active,
     .v-leave-active {
         transition: all .5s ease;
+    }
+    nav {
+        touch-action: pan-y;
     }
 </style>
